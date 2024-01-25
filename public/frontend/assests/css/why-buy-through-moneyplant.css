@@ -1,0 +1,389 @@
+.ProFindBtnBox{
+    display: flex;
+     justify-content: start;
+       gap: 20px;
+}
+
+
+.whyBuyThroughSection{
+    padding: 50px 0px;
+    margin-top: 120px;
+}
+
+
+.WhyBuyHeading h1{
+    font-family: ui-sans-serif;
+    font-size: 50px;
+    font-weight: bold;
+     line-height: 60px;
+     margin-top: 10px;
+}
+
+.WhyBuyPara span{
+    color:#1f663a ;
+}
+
+.WhyBuyPara p{
+  color: #000;
+    text-align: left;
+    letter-spacing: -.5px;
+    margin-bottom: 1rem;
+    font-size: 20px;
+    font-weight: 500;
+    line-height: 30px;
+   font-family: ui-sans-serif;
+}
+
+
+.ProFindBtn a{
+    text-decoration: none;
+     font-family: ui-sans-serif;
+     color: #1f663a;
+         font-size: 18px;
+           font-weight: bold;
+}
+
+.ProFindBtn{
+    border-bottom: 2px solid #1f663a;
+    padding: 10px 0px;
+}
+
+.WhyBuyBannerImg {
+    overflow: hidden;
+}
+
+.WhyBuyBannerImg img{
+     width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: top;
+    transition: .3s;
+
+}
+
+.WhyBuyBannerImg img:hover{
+    transform: scale(1.1);
+}
+
+.WhyBuyBannerSection{
+  padding-bottom: 50px;
+}
+
+.contactSection{
+    padding-bottom: 50px;
+}
+
+
+.circleImg img{
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+
+}
+
+.cText a{
+   text-decoration: none;
+     font-family: ui-sans-serif;
+     color: #1f663a;
+    font-size: 18px;
+    font-weight: bold;
+}
+
+.cText p{
+      font-family: ui-sans-serif;
+     color: #000;
+    font-size: 20px;
+    font-weight:500;
+}
+
+
+.whatsAppBox{
+    border: 1px solid #1f663a;
+    padding: 15px;
+    text-align: center;
+    width: 185px;
+     cursor: pointer;
+}
+
+.whatsAppBox:hover{
+    background-color: #1f663a;
+    color: #fff;
+}
+
+.whatsAppBox:hover p{
+    color: #fff;
+}
+
+
+
+
+.whatsAppBox p{
+
+     font-family: ui-sans-serif;
+     color: #1f663a;
+    font-size: 18px;
+    font-weight: bold;
+}
+
+.whatsAppBox a{
+     text-decoration: none;
+
+     font-family: ui-sans-serif;
+     color: #fff;
+    font-size: 18px;
+    font-weight: bold;
+
+
+}
+
+.ModalLogo img{
+    max-width: 100px;
+}
+
+
+.paddingRight{
+    padding-right: 170px;
+}
+
+
+.agent-desc{
+
+    border-bottom: 1px solid #dadad2;
+    padding-bottom: 20px;
+}
+
+
+.socialIconsList{
+    display: flex;
+    justify-content:start;
+    padding-left: 0;
+    gap: 20px;
+}
+
+
+.socialIconsList li{
+    list-style: none;
+}
+
+.socialIconsList li a{
+      font-size: 20px;
+      color: #000;
+
+}
+
+
+.SharePara{
+    font-family: ui-sans-serif;
+    font-size: 22px;
+    font-weight: 500;
+}
+
+
+.lisitBox{
+    display: flex;
+    align-items: baseline;
+    gap: 10px;
+}
+
+.itemBoxOne .lisitBox{
+    margin-bottom: 10px;
+}
+
+.SaleHeading h5{
+    font-family: ui-sans-serif;
+    font-weight: 600;
+    font-size: 25px;
+}
+
+
+.salePara p{
+      font-family: ui-sans-serif;
+    font-weight: 400;
+    font-size: 20px;
+}
+
+.whoIsMoneyPlantSection{
+ background-image: url(https://imagedelivery.net/yg9mV_kJZn9RkpQKfOuKfA/8432a2e3-13c3-4b3a-6bc4-2e15b8871b00/public);
+
+  background-position: center center;
+
+  background-repeat: no-repeat;
+
+  background-size: cover;
+
+  background-attachment: fixed;
+
+}
+
+.proSlider{
+    padding: 50px 0;
+    background-color: #f3f3f2;
+}
+
+.SliderTextHeading h5{
+     font-family: ui-sans-serif;
+    font-weight: 600;
+    font-size: 25px;
+}
+
+.viewMore{
+ text-align: end;
+}
+
+.viewMore a{
+    text-decoration: none;
+    font-family: ui-sans-serif;
+    color: #1f663a;
+    font-size: 18px;
+    font-weight: 500;
+}
+
+
+    .swiper {
+      width: 100%;
+      height: 100%;
+    }
+
+
+
+    .swiper-slide {
+    text-align: center;
+    font-size: 18px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+    background-color: transparent;
+    border-radius: 8px;
+    padding: 20px 24px;
+    position: relative;
+    box-shadow:  none;
+    text-align: left;
+    padding: 7px;
+    border: none;
+}
+
+.swiper-button-next, .swiper-rtl .swiper-button-prev {
+    right: var(--swiper-navigation-sides-offset,10px) !important;
+    left: auto;
+}
+
+.swiper-button-prev, .swiper-rtl .swiper-button-next {
+    left: var(--swiper-navigation-sides-offset,10px) !important;
+    right: auto;
+}
+
+    .swiper-slide img {
+      display: block;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+
+    .sliderFullContact{
+        display: flex;
+        justify-content: space-between;
+    }
+
+
+    .SliderTextContent{
+        display:  flex;
+        flex-direction: column;
+    }
+
+    .SliderTextContent h5{
+          font-family: ui-sans-serif;
+           font-size:  23px;
+            font-weight: 500;
+
+    }
+
+
+    .SliderTextContent p{
+          font-family: ui-sans-serif;
+           font-size:  18px;
+            font-weight: 400;
+
+    }
+
+    .SliderList li {
+           font-family: ui-sans-serif;
+           font-size:  20px;
+            font-weight: 400;
+    }
+
+     .SliderTextContent h5:hover{
+        color: #1f663a;
+     }
+
+      .SliderTextContent p:hover{
+        color: #1f663a;
+     }
+
+
+     .card-price{
+         font-family: ui-sans-serif;
+          font-size:  22px;
+            font-weight: 500;
+     }
+
+     .card-price:hover{
+        color: #1f663a;
+     }
+
+
+     .ContactForm{
+        padding: 50px 0;
+     }
+
+     .contactFormText h5{
+        font-family: ui-sans-serif;
+        font-size:  25px;
+        font-weight: 600;
+     }
+
+     .textHere{
+          font-family: ui-sans-serif;
+           font-weight: 400;
+           color: #1f663a;
+     }
+
+
+      .contactFormText p{
+            font-family: ui-sans-serif;
+            font-weight: 400;
+            font-size: 20px;
+      }
+
+      .form-label{
+         font-family: ui-sans-serif;
+            font-size:  17px;
+             font-weight: 500;
+      }
+
+      .form-control {
+        padding: 0.775rem 0.75rem;
+    }
+
+    ::placeholder{
+         font-family: ui-sans-serif;
+          font-size:  15px;
+    }
+
+
+    .customWidthModalDialog{
+        max-width: 700px !important;
+    }
+
+     .modalHeader{
+         font-family: ui-sans-serif;
+           font-size:  23px;
+              font-weight: 600;
+     }
+
+
+     .socialIconsList li  a:hover{
+        color: #1f663a;
+
+     }

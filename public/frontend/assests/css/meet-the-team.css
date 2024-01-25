@@ -1,0 +1,302 @@
+.MeetTeamSection {
+    background-image: url(https://imagedelivery.net/yg9mV_kJZn9RkpQKfOuKfA/d6bb40f2-ab59-4370-85c5-525a20fe5b00/public);
+    background-repeat: no-repeat;
+    background-size: cover;
+    height: 296px;
+    background-position: center center;
+    margin-top: 114px;
+}
+
+
+
+.MeetPropertySection {
+    padding: 50px 0px 50px 0;
+
+}
+
+.MeetTheTeamTabSection {
+    padding: 50px 0px 50px 0;
+}
+
+.meetingheading h1 {
+    font-size: 35px;
+    line-height: 40px;
+    font-family: ui-sans-serif;
+    font-weight: bold;
+    text-align: center;
+}
+
+.meetThePara p {
+    color: #000;
+    text-align: center;
+    letter-spacing: -0.5px;
+    margin-bottom: 1rem;
+    font-size: 20px;
+    font-weight: 500;
+    line-height: 30px;
+    margin: 20px auto;
+    font-family: ui-sans-serif;
+}
+
+.SearchBar {
+    display: flex;
+    justify-content: start;
+    align-items: center;
+}
+
+.search-input {
+    border: none;
+}
+
+
+
+.FilterTabs {
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+}
+
+
+.nav-link {
+    color: #000;
+
+}
+
+.nav-link:hover {
+    color: #000;
+}
+
+
+#myBtnContainer .btn {
+    border: none !important;
+    text-transform: uppercase;
+    font-family: ui-sans-serif;
+    font-size: 18px;
+    font-weight: 500;
+    padding: 10px 20px;
+    margin: 0 6px;
+    color: #000;
+
+
+}
+
+.tabItem .btn {
+    border: none !important;
+    text-transform: uppercase;
+    font-family: ui-sans-serif;
+    font-size: 18px;
+    font-weight: 500;
+    padding: 10px 20px;
+    margin: 0 6px;
+
+
+}
+
+#myBtnContainer .btn:hover {
+    background: #1f663a;
+    color: #fff;
+}
+
+.lang .spanOne {
+    padding-left: 80px;
+}
+
+.lang .spanTwo {
+    padding-left: 111px;
+}
+
+.lang .spanThree {
+    padding-left: 194px;
+}
+
+.CusTumBorder {
+    border-bottom: 1px solid #1f663a;
+}
+
+.teamImg {
+    overflow: hidden;
+}
+
+.teamImg img {
+    width: 100%;
+    height: 100%;
+    aspect-ratio: .8/1;
+    object-fit: cover;
+    object-position: top;
+    transition: .3s;
+    margin-bottom: 10px;
+}
+
+
+
+.teamImg img:hover {
+    transform: scale(1.1);
+}
+
+figure img {
+    width: 100%;
+    height: 100%;
+    aspect-ratio: .8/1;
+    object-fit: cover;
+    object-position: top;
+    transition: .3s;
+}
+
+.teamCard_body {
+    margin-top: 30px;
+}
+
+.teamCard_body h5 {
+    font-family: ui-sans-serif;
+    font-size: 20px;
+    margin-top: 10px;
+    line-height: 25px;
+    font-weight: 600;
+}
+
+.teamCard_body p {
+    font-family: ui-sans-serif;
+    font-size: 18px;
+    font-weight: 500;
+    margin-top: 5px;
+    color: #424141;
+}
+
+.teamCard_body a {
+    color: inherit;
+}
+
+figure {
+    overflow: hidden;
+}
+
+figure img:hover {
+    transform: scale(1.1);
+}
+
+.filterDiv {
+
+    display: none;
+    /* Hidden by default */
+}
+
+.show {
+    display: block;
+}
+
+.btn.active {
+    background-color: #1f663a;
+    color: #fff;
+}
+
+
+/* meatTheTEamDetail section css start */
+
+.meatTheTEamDetail {
+    padding: 50px 0px 50px 0;
+    margin-top: 114px;
+
+}
+
+.SocailMediaSection {
+    display: flex;
+    justify-content: start;
+    align-items: center;
+    text-align: center;
+    gap: 20px;
+}
+
+.socailBox {
+    padding: 6px 10px;
+    border: 1px solid #1f663a;
+    transition: all .2s ease-in-out;
+}
+
+.socailBox a {
+    text-decoration: none;
+    color: inherit;
+}
+
+
+.socailBox i {
+    font-size: 16px;
+    font-weight: 500;
+}
+
+.socailBox span {
+    font-size: 16px;
+    font-family: ui-sans-serif;
+    font-weight: 600;
+}
+
+.socailBox:hover {
+    background-color: #1f663a;
+    transition: all .2s ease-in-out;
+}
+
+.socailBox:hover i {
+    color: #fff !important;
+}
+
+.socailBox:hover span {
+    color: #fff !important;
+}
+
+.NameDetails h1 {
+    font-family: ui-sans-serif;
+    font-size: 35px;
+    line-height: 40px;
+    font-weight: bold;
+}
+
+.NameDetails p {
+    font-size: 20px;
+    font-weight: 500;
+    line-height: 30px;
+
+    font-family: ui-sans-serif;
+}
+
+.MeetTeamContentDetailTextPara p {
+    font-size: 17px;
+    margin-top: 25px;
+    font-family: ui-sans-serif;
+    font-weight: 500;
+
+
+}
+
+.MeetLanguage p {
+    font-size: 20px;
+    font-family: ui-sans-serif;
+    font-weight: 500;
+}
+
+.MeetLanguage strong {
+    font-family: ui-sans-serif;
+    font-weight: 600;
+}
+
+.MeetTeamContentDetailImg img {
+    width: 100%;
+    height: 100%;
+    aspect-ratio: .8/1;
+    object-fit: cover;
+    object-position: top;
+    transition: .3s;
+    transform: scale(0.9);
+}
+
+.MeetTeamContentDetailImg img:hover {
+    transform: scale(1);
+}
+
+.meetTeamTabsGrid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(250px, 350px));
+    grid-gap: 15px 15px;
+    justify-content: center;
+    align-items: baseline;
+}
+
+/* meatTheTEamDetail section css end */
