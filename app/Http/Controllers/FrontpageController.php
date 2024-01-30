@@ -71,7 +71,7 @@ class FrontpageController extends Controller
                                 })
                                 ->paginate(10); 
 
-        return view('pages.search', compact('properties'));
+        return view('frontend.page.search', compact('properties'));
     }
 
 }
