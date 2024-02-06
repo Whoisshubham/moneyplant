@@ -61,15 +61,13 @@
 }
 
 .NextSwiperBtn{
-        right: var(--swiper-navigation-sides-offset,40px) !important;
-            top: var(--swiper-navigation-top-offset,47%) !important;
+        display: none;
 
     left: auto;
 }
 
 .PreSwiperBtn{
-    left: var(--swiper-navigation-sides-offset,227px) !important;
-        top: var(--swiper-navigation-top-offset,47%) !important;
+  display: none;
     right: auto;
 }
 

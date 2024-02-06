@@ -28,7 +28,7 @@ class TestimonialController extends Controller
             'message' => 'required|max:2000'
         ]);
 
-        $image = $request->file('image');
+        
 
         $testimonial = new Feedback();
         $testimonial->name = $request->name;

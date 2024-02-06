@@ -44,15 +44,21 @@
                         <span>Testimonials</span>
                     </a>
                 </li>
-
-                {{-- <li class="header">Blog</li>
-                <li class="{{ Request::is('admin/categories*') ? 'active' : '' }}">
-                    <a href="{{ route('admin.categories.index') }}">
+                <li class="{{ Request::is('admin/team-categories*') ? 'active' : '' }}">
+                    <a href="{{ route('admin.team-categories.index') }}">
                         <i class="material-icons">category</i>
-                        <span>Categories</span>
+                        <span>Team Categories</span>
                     </a>
                 </li>
-                <li class="{{ Request::is('admin/tags*') ? 'active' : '' }}">
+                <li class="{{ Request::is('admin/team*') ? 'active' : '' }}">
+                    <a href="{{ route('admin.team.index') }}">
+                        <i class="material-icons">view_carousel</i>
+                        <span>Team</span>
+                    </a>
+                </li>
+
+               
+                 {{--   <li class="{{ Request::is('admin/tags*') ? 'active' : '' }}">
                     <a href="{{ route('admin.tags.index') }}">
                         <i class="material-icons">label</i>
                         <span>Tags</span>

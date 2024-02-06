@@ -99,7 +99,7 @@
   
   
   
-                  <li> <a href="https://mightytech.dev/clientdemo/moneyPlantNew/contact.php" target="_blank" rel="noopener noreferrer">  Contact Us</a></li>
+                  <li> <a href="https://mightytech.dev/clientdemo/moneyPlantNew/{{url('/contact')}}" target="_blank" rel="noopener noreferrer">  Contact Us</a></li>
   
   
   
@@ -146,7 +146,7 @@
                             <div class="accordion-body">
                                 <ul class="SideBarNav">
                                     <li>
-                                        <a href="properties-for-sale.php">Property Search</a>
+                                        <a href="{{url('search')}}">Property Search</a>
                                     </li>
                                     <li>
                                         <a href="why-buy-through-moneyplant.php">Why Buy through Money Plant</a>
@@ -367,8 +367,8 @@
                         </div>
                     </div>
 
-                    <button onclick="window.location.href='contact.php'" class="NavBtnCUs navLisitHover">
-                        <a href="contact.php" class="textaccor text-dark">Contact</a>
+                    <button onclick="window.location.href='{{url('/contact')}}'" class="NavBtnCUs navLisitHover">
+                        <a href="{{url('/contact')}}" class="textaccor text-dark">Contact</a>
                     </button>
                 </div>
             </div>

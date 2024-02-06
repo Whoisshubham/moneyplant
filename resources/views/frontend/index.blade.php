@@ -47,260 +47,96 @@
                     </div>
                 </div>
             </div>
-            <div class="row mt-5">
-                <div class="col-lg-4 col-md-12 col-sm-12" data-aos="fade-up" data-aos-duration="3000">
-                    <div class="card">
-                        <div class="FeatureIMg">
-                            <img src="https://imagedelivery.net/yg9mV_kJZn9RkpQKfOuKfA/a63dba92-09b8-406b-5638-77b3cb460b00/public"
-                                class="card-img-top" alt="...">
-                            <div class="priceBox">
-                                <p>2M AED</p>
+            @if (count($properties) > 0)
+                <div class="row mt-5">
+                    @foreach ($properties as $iteams)      
+                        <div class="col-lg-4 col-md-12 col-sm-12" data-aos="fade-up" data-aos-duration="3000">
+                            <div class="card">
+                                <div class="FeatureIMg">
+                                    <img src="{{asset($iteams->image)}}"
+                                        class="card-img-top" alt="...">
+                                    <div class="priceBox">
+                                        <p>{{$iteams->price ?? null}}</p>
+                                    </div>
+                                </div>
+                                <div class="card-body">
+                                    <div class="rentDiv">
+                                        <h5>{{$iteams->title ?? null}}</h5>
+                                        <p>{{$iteams->address ?? null}},{{$iteams->city ?? null}}</p>
+                                    </div>
+                                    <div class="Cardfeature">
+                                        <div class="badIcon IconColorOne">
+                                            <!-- <i class="fa-solid fa-bed"></i> -->
+                                            <svg xmlns="http://www.w3.org/2000/svg" width="22" height="23"
+                                                viewBox="0 0 22 23" fill="none">
+                                                <script xmlns="">
+                                                    window._wordtune_extension_installed = true;
+                                                </script>
+                                                <g clip-path="url(#clip0_1171_883)">
+                                                    <path fill-rule="evenodd" clip-rule="evenodd"
+                                                        d="M17.6734 9.12021V3.25H16.5V5.08333H4.84001V3.25H3.66668V9.12028L3.50274 9.21575C2.50655 9.79584 1.83334 10.8597 1.83334 12.0867V15.7534C1.83334 16.0778 2.09605 16.34 2.42001 16.34H3.66668V20.0067H4.84001V16.34H16.5V20.0067H17.6734V16.34H18.92C19.2447 16.34 19.5067 16.078 19.5067 15.7534V12.0867C19.5067 10.8599 18.8327 9.79594 17.8372 9.21569L17.6734 9.12021ZM16.5 6.25667V8.75H11.2567V6.25667H16.5ZM4.84001 6.25667H10.0833V8.75H4.84001V6.25667ZM18.3334 15.1667H3.00668V12.0867C3.00668 10.8934 3.97667 9.92335 5.17001 9.92335H16.17C17.3634 9.92335 18.3334 10.8934 18.3334 12.0867V15.1667Z"
+                                                        fill="#1f663a" stroke="#1f663a" stroke-width="0.5" />
+                                                </g>
+                                                <defs>
+                                                    <clipPath id="clip0_1171_883">
+                                                        <rect width="22" height="22" fill="white"
+                                                            transform="translate(0 0.5)" />
+                                                    </clipPath>
+                                                </defs>
+                                            </svg>
+                                            <span>{{$iteams->bedroom ?? null}} Bedroom</span>
+                                        </div>
+                                        <div class="bathIcon IconColorOne">
+                                            <!-- <i class="fa-solid fa-bath"></i> -->
+                                            <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22"
+                                                viewBox="0 0 22 22" fill="none">
+                                                <script xmlns="">
+                                                    window._wordtune_extension_installed = true;
+                                                </script>
+                                                <g clip-path="url(#clip0_1171_879)">
+                                                    <path fill-rule="evenodd" clip-rule="evenodd"
+                                                        d="M5.77386 9.12693V6.18599C5.77386 5.04654 6.70689 4.12035 7.85477 4.12035C8.89473 4.12035 9.75835 4.88059 9.91154 5.87089H11.0487C10.8889 4.26143 9.51748 3 7.85477 3C6.08495 3 4.64523 4.42916 4.64523 6.18599V9.12693H2.56431C2.25202 9.12693 2 9.37708 2 9.6871V11.4376C2 13.5801 3.38646 15.4051 5.31588 16.086L5.52697 16.1605V19H6.6556V16.3742H14.3444V19H15.473V16.1605L15.6841 16.086C17.6135 15.4051 19 13.5801 19 11.4376V9.6871C19 9.37708 18.748 9.12693 18.4357 9.12693H5.77386ZM3.12863 10.2473H17.8714V11.4376C17.8714 13.5425 16.1474 15.2538 14.027 15.2538H6.97303C4.85259 15.2538 3.12863 13.5425 3.12863 11.4376V10.2473Z"
+                                                        fill="#1f663a" stroke="#1f663a" stroke-width="0.5" />
+                                                </g>
+                                                <defs>
+                                                    <clipPath id="clip0_1171_879">
+                                                        <rect width="22" height="22" fill="white" />
+                                                    </clipPath>
+                                                </defs>
+                                            </svg>
+                                            <span>{{$iteams->bathroom ?? null}} Bathroom</span>
+                                        </div>
+                                        <div class="SqfeetIcon IconColorOne">
+                                            <!-- <i class="fa-solid fa-house"></i> -->
+                                            <svg xmlns="http://www.w3.org/2000/svg" width="22" height="23"
+                                                viewBox="0 0 22 23" fill="none">
+                                                <script xmlns="">
+                                                    window._wordtune_extension_installed = true;
+                                                </script>
+                                                <g clip-path="url(#clip0_1171_875)">
+                                                    <path fill-rule="evenodd" clip-rule="evenodd"
+                                                        d="M17.6685 18.6667H4.17333V5.17333H17.6666L17.6685 18.6667ZM3 5.50333V18.3367C3 19.1655 3.6745 19.84 4.50333 19.84H17.3367C18.1655 19.84 18.84 19.1655 18.84 18.3367V5.50333C18.84 4.6745 18.1655 4 17.3367 4H4.50333C3.6745 4 3 4.6745 3 5.50333Z"
+                                                        fill="#1f663a" stroke="#1f663a" stroke-width="0.5" />
+                                                    <path fill-rule="evenodd" clip-rule="evenodd"
+                                                        d="M13.9986 8.8402V11.5902H15.1719V7.66687H11.2486V8.8402H13.9986ZM7.83856 15.0002V12.2502H6.66522V16.1735H10.5886V15.0002H7.83856Z"
+                                                        fill="#1f663a" stroke="#1f663a" stroke-width="0.5" />
+                                                </g>
+                                                <defs>
+                                                    <clipPath id="clip0_1171_875">
+                                                        <rect width="22" height="22" fill="white"
+                                                            transform="matrix(-1 0 0 1 22 0.5)" />
+                                                    </clipPath>
+                                                </defs>
+                                            </svg>
+                                            <span>{{$iteams->area ?? null}} Sq ft.</span>
+                                        </div>
+                                    </div>
+                                </div>
                             </div>
                         </div>
-                        <div class="card-body">
-                            <div class="rentDiv">
-                                <h5>Bellevue Towers 1</h5>
-                                <p>Downtown Dubai</p>
-                            </div>
-                            <div class="Cardfeature">
-                                <div class="badIcon IconColorOne">
-                                    <!-- <i class="fa-solid fa-bed"></i> -->
-                                    <svg xmlns="http://www.w3.org/2000/svg" width="22" height="23"
-                                        viewBox="0 0 22 23" fill="none">
-                                        <script xmlns="">
-                                            window._wordtune_extension_installed = true;
-                                        </script>
-                                        <g clip-path="url(#clip0_1171_883)">
-                                            <path fill-rule="evenodd" clip-rule="evenodd"
-                                                d="M17.6734 9.12021V3.25H16.5V5.08333H4.84001V3.25H3.66668V9.12028L3.50274 9.21575C2.50655 9.79584 1.83334 10.8597 1.83334 12.0867V15.7534C1.83334 16.0778 2.09605 16.34 2.42001 16.34H3.66668V20.0067H4.84001V16.34H16.5V20.0067H17.6734V16.34H18.92C19.2447 16.34 19.5067 16.078 19.5067 15.7534V12.0867C19.5067 10.8599 18.8327 9.79594 17.8372 9.21569L17.6734 9.12021ZM16.5 6.25667V8.75H11.2567V6.25667H16.5ZM4.84001 6.25667H10.0833V8.75H4.84001V6.25667ZM18.3334 15.1667H3.00668V12.0867C3.00668 10.8934 3.97667 9.92335 5.17001 9.92335H16.17C17.3634 9.92335 18.3334 10.8934 18.3334 12.0867V15.1667Z"
-                                                fill="#1f663a" stroke="#1f663a" stroke-width="0.5" />
-                                        </g>
-                                        <defs>
-                                            <clipPath id="clip0_1171_883">
-                                                <rect width="22" height="22" fill="white"
-                                                    transform="translate(0 0.5)" />
-                                            </clipPath>
-                                        </defs>
-                                    </svg>
-                                    <span>2 Bed</span>
-                                </div>
-                                <div class="bathIcon IconColorOne">
-                                    <!-- <i class="fa-solid fa-bath"></i> -->
-                                    <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22"
-                                        viewBox="0 0 22 22" fill="none">
-                                        <script xmlns="">
-                                            window._wordtune_extension_installed = true;
-                                        </script>
-                                        <g clip-path="url(#clip0_1171_879)">
-                                            <path fill-rule="evenodd" clip-rule="evenodd"
-                                                d="M5.77386 9.12693V6.18599C5.77386 5.04654 6.70689 4.12035 7.85477 4.12035C8.89473 4.12035 9.75835 4.88059 9.91154 5.87089H11.0487C10.8889 4.26143 9.51748 3 7.85477 3C6.08495 3 4.64523 4.42916 4.64523 6.18599V9.12693H2.56431C2.25202 9.12693 2 9.37708 2 9.6871V11.4376C2 13.5801 3.38646 15.4051 5.31588 16.086L5.52697 16.1605V19H6.6556V16.3742H14.3444V19H15.473V16.1605L15.6841 16.086C17.6135 15.4051 19 13.5801 19 11.4376V9.6871C19 9.37708 18.748 9.12693 18.4357 9.12693H5.77386ZM3.12863 10.2473H17.8714V11.4376C17.8714 13.5425 16.1474 15.2538 14.027 15.2538H6.97303C4.85259 15.2538 3.12863 13.5425 3.12863 11.4376V10.2473Z"
-                                                fill="#1f663a" stroke="#1f663a" stroke-width="0.5" />
-                                        </g>
-                                        <defs>
-                                            <clipPath id="clip0_1171_879">
-                                                <rect width="22" height="22" fill="white" />
-                                            </clipPath>
-                                        </defs>
-                                    </svg>
-                                    <span>3 Bathroom</span>
-                                </div>
-                                <div class="SqfeetIcon IconColorOne">
-                                    <!-- <i class="fa-solid fa-house"></i> -->
-                                    <svg xmlns="http://www.w3.org/2000/svg" width="22" height="23"
-                                        viewBox="0 0 22 23" fill="none">
-                                        <script xmlns="">
-                                            window._wordtune_extension_installed = true;
-                                        </script>
-                                        <g clip-path="url(#clip0_1171_875)">
-                                            <path fill-rule="evenodd" clip-rule="evenodd"
-                                                d="M17.6685 18.6667H4.17333V5.17333H17.6666L17.6685 18.6667ZM3 5.50333V18.3367C3 19.1655 3.6745 19.84 4.50333 19.84H17.3367C18.1655 19.84 18.84 19.1655 18.84 18.3367V5.50333C18.84 4.6745 18.1655 4 17.3367 4H4.50333C3.6745 4 3 4.6745 3 5.50333Z"
-                                                fill="#1f663a" stroke="#1f663a" stroke-width="0.5" />
-                                            <path fill-rule="evenodd" clip-rule="evenodd"
-                                                d="M13.9986 8.8402V11.5902H15.1719V7.66687H11.2486V8.8402H13.9986ZM7.83856 15.0002V12.2502H6.66522V16.1735H10.5886V15.0002H7.83856Z"
-                                                fill="#1f663a" stroke="#1f663a" stroke-width="0.5" />
-                                        </g>
-                                        <defs>
-                                            <clipPath id="clip0_1171_875">
-                                                <rect width="22" height="22" fill="white"
-                                                    transform="matrix(-1 0 0 1 22 0.5)" />
-                                            </clipPath>
-                                        </defs>
-                                    </svg>
-                                    <span>1292 Sq ft.</span>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
+                    @endforeach
                 </div>
-                <div class="col-lg-4 col-md-12 col-sm-12" data-aos="fade-up" data-aos-duration="3000">
-                    <div class="card">
-                        <div class="FeatureIMg">
-                            <img src="https://assets-global.website-files.com/63dc125af62b37a95e0bedc0/65323fad35e8b66bfa990402_David-Bellevue%20Towers%201-p-500.jpg"
-                                class="card-img-top" alt="...">
-                            <div class="priceBox">
-                                <p>5M AED</p>
-                            </div>
-                        </div>
-                        <div class="card-body">
-                            <div class="rentDiv">
-                                <h5>Jumeirah Luxury Living</h5>
-                                <p>Jumeirah Golf Estates Townhouses</p>
-                            </div>
-                            <div class="Cardfeature">
-                                <div class="badIcon IconColorOne">
-                                    <!-- <i class="fa-solid fa-bed"></i> -->
-                                    <svg xmlns="http://www.w3.org/2000/svg" width="22" height="23"
-                                        viewBox="0 0 22 23" fill="none">
-                                        <script xmlns="">
-                                            window._wordtune_extension_installed = true;
-                                        </script>
-                                        <g clip-path="url(#clip0_1171_883)">
-                                            <path fill-rule="evenodd" clip-rule="evenodd"
-                                                d="M17.6734 9.12021V3.25H16.5V5.08333H4.84001V3.25H3.66668V9.12028L3.50274 9.21575C2.50655 9.79584 1.83334 10.8597 1.83334 12.0867V15.7534C1.83334 16.0778 2.09605 16.34 2.42001 16.34H3.66668V20.0067H4.84001V16.34H16.5V20.0067H17.6734V16.34H18.92C19.2447 16.34 19.5067 16.078 19.5067 15.7534V12.0867C19.5067 10.8599 18.8327 9.79594 17.8372 9.21569L17.6734 9.12021ZM16.5 6.25667V8.75H11.2567V6.25667H16.5ZM4.84001 6.25667H10.0833V8.75H4.84001V6.25667ZM18.3334 15.1667H3.00668V12.0867C3.00668 10.8934 3.97667 9.92335 5.17001 9.92335H16.17C17.3634 9.92335 18.3334 10.8934 18.3334 12.0867V15.1667Z"
-                                                fill="#1f663a" stroke="#1f663a" stroke-width="0.5" />
-                                        </g>
-                                        <defs>
-                                            <clipPath id="clip0_1171_883">
-                                                <rect width="22" height="22" fill="white"
-                                                    transform="translate(0 0.5)" />
-                                            </clipPath>
-                                        </defs>
-                                    </svg>
-                                    <span>4 Bed</span>
-                                </div>
-                                <div class="bathIcon IconColorOne">
-                                    <!-- <i class="fa-solid fa-bath"></i> -->
-                                    <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22"
-                                        viewBox="0 0 22 22" fill="none">
-                                        <script xmlns="">
-                                            window._wordtune_extension_installed = true;
-                                        </script>
-                                        <g clip-path="url(#clip0_1171_879)">
-                                            <path fill-rule="evenodd" clip-rule="evenodd"
-                                                d="M5.77386 9.12693V6.18599C5.77386 5.04654 6.70689 4.12035 7.85477 4.12035C8.89473 4.12035 9.75835 4.88059 9.91154 5.87089H11.0487C10.8889 4.26143 9.51748 3 7.85477 3C6.08495 3 4.64523 4.42916 4.64523 6.18599V9.12693H2.56431C2.25202 9.12693 2 9.37708 2 9.6871V11.4376C2 13.5801 3.38646 15.4051 5.31588 16.086L5.52697 16.1605V19H6.6556V16.3742H14.3444V19H15.473V16.1605L15.6841 16.086C17.6135 15.4051 19 13.5801 19 11.4376V9.6871C19 9.37708 18.748 9.12693 18.4357 9.12693H5.77386ZM3.12863 10.2473H17.8714V11.4376C17.8714 13.5425 16.1474 15.2538 14.027 15.2538H6.97303C4.85259 15.2538 3.12863 13.5425 3.12863 11.4376V10.2473Z"
-                                                fill="#1f663a" stroke="#1f663a" stroke-width="0.5" />
-                                        </g>
-                                        <defs>
-                                            <clipPath id="clip0_1171_879">
-                                                <rect width="22" height="22" fill="white" />
-                                            </clipPath>
-                                        </defs>
-                                    </svg>
-                                    <span>4 Bathroom</span>
-                                </div>
-                                <div class="SqfeetIcon IconColorOne">
-                                    <!-- <i class="fa-solid fa-house"></i> -->
-                                    <svg xmlns="http://www.w3.org/2000/svg" width="22" height="23"
-                                        viewBox="0 0 22 23" fill="none">
-                                        <script xmlns="">
-                                            window._wordtune_extension_installed = true;
-                                        </script>
-                                        <g clip-path="url(#clip0_1171_875)">
-                                            <path fill-rule="evenodd" clip-rule="evenodd"
-                                                d="M17.6685 18.6667H4.17333V5.17333H17.6666L17.6685 18.6667ZM3 5.50333V18.3367C3 19.1655 3.6745 19.84 4.50333 19.84H17.3367C18.1655 19.84 18.84 19.1655 18.84 18.3367V5.50333C18.84 4.6745 18.1655 4 17.3367 4H4.50333C3.6745 4 3 4.6745 3 5.50333Z"
-                                                fill="#1f663a" stroke="#1f663a" stroke-width="0.5" />
-                                            <path fill-rule="evenodd" clip-rule="evenodd"
-                                                d="M13.9986 8.8402V11.5902H15.1719V7.66687H11.2486V8.8402H13.9986ZM7.83856 15.0002V12.2502H6.66522V16.1735H10.5886V15.0002H7.83856Z"
-                                                fill="#1f663a" stroke="#1f663a" stroke-width="0.5" />
-                                        </g>
-                                        <defs>
-                                            <clipPath id="clip0_1171_875">
-                                                <rect width="22" height="22" fill="white"
-                                                    transform="matrix(-1 0 0 1 22 0.5)" />
-                                            </clipPath>
-                                        </defs>
-                                    </svg>
-                                    <span>2820 Sq ft.</span>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-lg-4 col-md-12 col-sm-12" data-aos="fade-up" data-aos-duration="3000">
-                    <div class="card">
-                        <div class="FeatureIMg">
-                            <img src="https://imagedelivery.net/yg9mV_kJZn9RkpQKfOuKfA/a5b665e2-d7f8-459a-d50e-f8fd45807e00/public"
-                                class="card-img-top" alt="...">
-                            <div class="priceBox">
-                                <p>13.9M AED</p>
-                            </div>
-                        </div>
-                        <div class="card-body">
-                            <div class="rentDiv">
-                                <h5>Alaya Gardens</h5>
-                                <p>Tilal Al Ghaf</p>
-                            </div>
-                            <div class="Cardfeature">
-                                <div class="badIcon IconColorOne">
-                                    <!-- <i class="fa-solid fa-bed"></i> -->
-                                    <svg xmlns="http://www.w3.org/2000/svg" width="22" height="23"
-                                        viewBox="0 0 22 23" fill="none">
-                                        <script xmlns="">
-                                            window._wordtune_extension_installed = true;
-                                        </script>
-                                        <g clip-path="url(#clip0_1171_883)">
-                                            <path fill-rule="evenodd" clip-rule="evenodd"
-                                                d="M17.6734 9.12021V3.25H16.5V5.08333H4.84001V3.25H3.66668V9.12028L3.50274 9.21575C2.50655 9.79584 1.83334 10.8597 1.83334 12.0867V15.7534C1.83334 16.0778 2.09605 16.34 2.42001 16.34H3.66668V20.0067H4.84001V16.34H16.5V20.0067H17.6734V16.34H18.92C19.2447 16.34 19.5067 16.078 19.5067 15.7534V12.0867C19.5067 10.8599 18.8327 9.79594 17.8372 9.21569L17.6734 9.12021ZM16.5 6.25667V8.75H11.2567V6.25667H16.5ZM4.84001 6.25667H10.0833V8.75H4.84001V6.25667ZM18.3334 15.1667H3.00668V12.0867C3.00668 10.8934 3.97667 9.92335 5.17001 9.92335H16.17C17.3634 9.92335 18.3334 10.8934 18.3334 12.0867V15.1667Z"
-                                                fill="#1f663a" stroke="#1f663a" stroke-width="0.5" />
-                                        </g>
-                                        <defs>
-                                            <clipPath id="clip0_1171_883">
-                                                <rect width="22" height="22" fill="white"
-                                                    transform="translate(0 0.5)" />
-                                            </clipPath>
-                                        </defs>
-                                    </svg>
-                                    <span>5 Bed</span>
-                                </div>
-                                <div class="bathIcon IconColorOne">
-                                    <!-- <i class="fa-solid fa-bath"></i> -->
-                                    <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22"
-                                        viewBox="0 0 22 22" fill="none">
-                                        <script xmlns="">
-                                            window._wordtune_extension_installed = true;
-                                        </script>
-                                        <g clip-path="url(#clip0_1171_879)">
-                                            <path fill-rule="evenodd" clip-rule="evenodd"
-                                                d="M5.77386 9.12693V6.18599C5.77386 5.04654 6.70689 4.12035 7.85477 4.12035C8.89473 4.12035 9.75835 4.88059 9.91154 5.87089H11.0487C10.8889 4.26143 9.51748 3 7.85477 3C6.08495 3 4.64523 4.42916 4.64523 6.18599V9.12693H2.56431C2.25202 9.12693 2 9.37708 2 9.6871V11.4376C2 13.5801 3.38646 15.4051 5.31588 16.086L5.52697 16.1605V19H6.6556V16.3742H14.3444V19H15.473V16.1605L15.6841 16.086C17.6135 15.4051 19 13.5801 19 11.4376V9.6871C19 9.37708 18.748 9.12693 18.4357 9.12693H5.77386ZM3.12863 10.2473H17.8714V11.4376C17.8714 13.5425 16.1474 15.2538 14.027 15.2538H6.97303C4.85259 15.2538 3.12863 13.5425 3.12863 11.4376V10.2473Z"
-                                                fill="#1f663a" stroke="#1f663a" stroke-width="0.5" />
-                                        </g>
-                                        <defs>
-                                            <clipPath id="clip0_1171_879">
-                                                <rect width="22" height="22" fill="white" />
-                                            </clipPath>
-                                        </defs>
-                                    </svg>
-                                    <span>8 Bathroom</span>
-                                </div>
-                                <div class="SqfeetIcon IconColorOne">
-                                    <!-- <i class="fa-solid fa-house"></i> -->
-                                    <svg xmlns="http://www.w3.org/2000/svg" width="22" height="23"
-                                        viewBox="0 0 22 23" fill="none">
-                                        <script xmlns="">
-                                            window._wordtune_extension_installed = true;
-                                        </script>
-                                        <g clip-path="url(#clip0_1171_875)">
-                                            <path fill-rule="evenodd" clip-rule="evenodd"
-                                                d="M17.6685 18.6667H4.17333V5.17333H17.6666L17.6685 18.6667ZM3 5.50333V18.3367C3 19.1655 3.6745 19.84 4.50333 19.84H17.3367C18.1655 19.84 18.84 19.1655 18.84 18.3367V5.50333C18.84 4.6745 18.1655 4 17.3367 4H4.50333C3.6745 4 3 4.6745 3 5.50333Z"
-                                                fill="#1f663a" stroke="#1f663a" stroke-width="0.5" />
-                                            <path fill-rule="evenodd" clip-rule="evenodd"
-                                                d="M13.9986 8.8402V11.5902H15.1719V7.66687H11.2486V8.8402H13.9986ZM7.83856 15.0002V12.2502H6.66522V16.1735H10.5886V15.0002H7.83856Z"
-                                                fill="#1f663a" stroke="#1f663a" stroke-width="0.5" />
-                                        </g>
-                                        <defs>
-                                            <clipPath id="clip0_1171_875">
-                                                <rect width="22" height="22" fill="white"
-                                                    transform="matrix(-1 0 0 1 22 0.5)" />
-                                            </clipPath>
-                                        </defs>
-                                    </svg>
-                                    <span>8192 Sq ft.</span>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
+            @endif
         </div>
     </section>
     <section class="marketPropertiesSection">

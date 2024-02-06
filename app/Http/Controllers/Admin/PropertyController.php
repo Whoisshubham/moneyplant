@@ -23,91 +23,91 @@ class PropertyController extends Controller
     {
         $properties = Property::latest()->withCount('comments')->get();
 
-        return view('admin.properties.index',compact('properties'));
+        return view('admin.properties.index', compact('properties'));
     }
 
 
     public function create()
-    {   
+    {
         $features = Feature::all();
 
-        return view('admin.properties.create',compact('features'));
+        return view('admin.properties.create', compact('features'));
     }
 
 
     public function store(Request $request)
     {
         $request->validate([
-            'title'     => 'required|unique:properties|max:255',
-            'price'     => 'required',
-            'purpose'   => 'required',
-            'type'      => 'required',
-            'bedroom'   => 'required',
-            'bathroom'  => 'required',
-            'city'      => 'required',
-            'address'   => 'required',
-            'area'      => 'required',
-            'image'     => 'required|image|mimes:jpeg,jpg,png',
-            'floor_plan'=> 'image|mimes:jpeg,jpg,png',
-            'description'        => 'required',
-            'location_latitude'  => 'required',
+            'title' => 'required|unique:properties|max:255',
+            'price' => 'required',
+            'purpose' => 'required',
+            'type' => 'required',
+            'bedroom' => 'required',
+            'bathroom' => 'required',
+            'city' => 'required',
+            'address' => 'required',
+            'area' => 'required',
+            'image' => 'required|mimes:jpeg,jpg,png,avif',
+            'floor_plan' => 'mimes:jpeg,jpg,png,avif',
+            'description' => 'required',
+            'location_latitude' => 'required',
             'location_longitude' => 'required',
         ]);
 
         $image = $request->file('image');
-        $slug  = str_slug($request->title);
+        $slug = str_slug($request->title);
 
-        if(isset($image)){
+        if (isset($image)) {
             $currentDate = Carbon::now()->toDateString();
-            $imagename = $slug.'-'.$currentDate.'-'.uniqid().'.'.$image->getClientOriginalExtension();
+            $imagename = $slug . '-' . $currentDate . '-' . uniqid() . '.' . $image->getClientOriginalExtension();
 
-            if(!Storage::disk('public')->exists('property')){
-                Storage::disk('public')->makeDirectory('property');
+            if (request()->hasFile('image')) {
+                $file = request()->file('image');
+                $fileName = $imagename;
+                $file->move('property', $fileName);
             }
-            $propertyimage = Image::make($image)->stream();
-            Storage::disk('public')->put('property/'.$imagename, $propertyimage);
 
         }
 
         $floor_plan = $request->file('floor_plan');
-        if(isset($floor_plan)){
+        if (isset($floor_plan)) {
             $currentDate = Carbon::now()->toDateString();
-            $imagefloorplan = 'floor-plan-'.$currentDate.'-'.uniqid().'.'.$floor_plan->getClientOriginalExtension();
+            $imagefloorplan = 'floor-plan-' . $currentDate . '-' . uniqid() . '.' . $floor_plan->getClientOriginalExtension();
 
-            if(!Storage::disk('public')->exists('property')){
-                Storage::disk('public')->makeDirectory('property');
+            if (request()->hasFile('floor_plan')) {
+                $floor_plan = request()->file('floor_plan');
+                $fileName2 = $imagefloorplan;
+                $floor_plan->move('property', $fileName2);
             }
-            $propertyfloorplan = Image::make($floor_plan)->stream();
-            Storage::disk('public')->put('property/'.$imagefloorplan, $propertyfloorplan);
 
-        }else{
+        } else {
             $imagefloorplan = 'default.png';
         }
 
         $property = new Property();
-        $property->title    = $request->title;
-        $property->slug     = $slug;
-        $property->price    = $request->price;
-        $property->purpose  = $request->purpose;
-        $property->type     = $request->type;
-        $property->image    = $imagename;
-        $property->bedroom  = $request->bedroom;
+        $property->title = $request->title;
+        $property->slug = $slug;
+        $property->price = $request->price;
+        $property->purpose = $request->purpose;
+        $property->type = $request->type;
+        $property->image = "property/" . $imagename;
+        $property->bedroom = $request->bedroom;
         $property->bathroom = $request->bathroom;
-        $property->city     = $request->city;
-        $property->city_slug= str_slug($request->city);
-        $property->address  = $request->address;
-        $property->area     = $request->area;
+        $property->city = $request->city;
+        $property->city_slug = str_slug($request->city);
+        $property->address = $request->address;
+        $property->area = $request->area;
 
-        if(isset($request->featured)){
+        if (isset($request->featured)) {
             $property->featured = true;
         }
         $property->agent_id = Auth::id();
-        $property->description          = $request->description;
-        $property->video                = $request->video;
-        $property->floor_plan           = $imagefloorplan;
-        $property->location_latitude    = $request->location_latitude;
-        $property->location_longitude   = $request->location_longitude;
-        $property->nearby               = $request->nearby;
+        $property->description = $request->description;
+        $property->video = $request->video;
+        $property->floor_plan = "property/" . $imagefloorplan;
+        $property->location_latitude = $request->location_latitude;
+        $property->location_longitude = $request->location_longitude;
+        $property->nearby = $request->nearby;
         $property->save();
 
         $property->features()->attach($request->features);
@@ -115,20 +115,14 @@ class PropertyController extends Controller
 
         $gallary = $request->file('gallaryimage');
 
-        if($gallary)
-        {
-            foreach($gallary as $images)
-            {
+        if ($gallary) {
+            foreach ($gallary as $images) {
                 $currentDate = Carbon::now()->toDateString();
-                $galimage['name'] = 'gallary-'.$currentDate.'-'.uniqid().'.'.$images->getClientOriginalExtension();
-                $galimage['size'] = $images->getClientSize();
+                $name = 'gallary-' . $currentDate . '-' . uniqid() . '.' . $images->getClientOriginalExtension();
+                $galimage['name'] = 'property/gallery/' . 'gallary-' . $currentDate . '-' . uniqid() . '.' . $images->getClientOriginalExtension();
+                $galimage['size'] = null;
                 $galimage['property_id'] = $property->id;
-                
-                if(!Storage::disk('public')->exists('property/gallery')){
-                    Storage::disk('public')->makeDirectory('property/gallery');
-                }
-                $propertyimage = Image::make($images)->stream();
-                Storage::disk('public')->put('property/gallery/'.$galimage['name'], $propertyimage);
+                $images->move('property/gallery/', $name);
 
                 $property->gallery()->create($galimage);
             }
@@ -145,7 +139,7 @@ class PropertyController extends Controller
 
         $videoembed = $this->convertYoutube($property->video, 560, 315);
 
-        return view('admin.properties.show',compact('property','videoembed'));
+        return view('admin.properties.show', compact('property', 'videoembed'));
     }
 
 
@@ -156,116 +150,111 @@ class PropertyController extends Controller
 
         $videoembed = $this->convertYoutube($property->video);
 
-        return view('admin.properties.edit',compact('property','features','videoembed'));
+        return view('admin.properties.edit', compact('property', 'features', 'videoembed'));
     }
 
 
     public function update(Request $request, $property)
     {
         $request->validate([
-            'title'     => 'required|max:255',
-            'price'     => 'required',
-            'purpose'   => 'required',
-            'type'      => 'required',
-            'bedroom'   => 'required',
-            'bathroom'  => 'required',
-            'city'      => 'required',
-            'address'   => 'required',
-            'area'      => 'required',
-            'image'     => 'image|mimes:jpeg,jpg,png',
-            'floor_plan'=> 'image|mimes:jpeg,jpg,png',
-            'description'        => 'required',
-            'location_latitude'  => 'required',
+            'title' => 'required|max:255',
+            'price' => 'required',
+            'purpose' => 'required',
+            'type' => 'required',
+            'bedroom' => 'required',
+            'bathroom' => 'required',
+            'city' => 'required',
+            'address' => 'required',
+            'area' => 'required',
+            'image' => 'image|mimes:jpeg,jpg,png',
+            'floor_plan' => 'image|mimes:jpeg,jpg,png',
+            'description' => 'required',
+            'location_latitude' => 'required',
             'location_longitude' => 'required'
         ]);
 
         $image = $request->file('image');
-        $slug  = str_slug($request->title);
+        $slug = str_slug($request->title);
 
         $property = Property::find($property->id);
 
-        if(isset($image)){
+        if (isset($image)) {
             $currentDate = Carbon::now()->toDateString();
-            $imagename = $slug.'-'.$currentDate.'-'.uniqid().'.'.$image->getClientOriginalExtension();
+            $imagename1 = $slug . '-' . $currentDate . '-' . uniqid() . '.' . $image->getClientOriginalExtension();
 
-            if(!Storage::disk('public')->exists('property')){
-                Storage::disk('public')->makeDirectory('property');
+            if (File::exists(public_path($request->image))) {
+                File::delete(public_path($request->image));
             }
-            if(Storage::disk('public')->exists('property/'.$property->image)){
-                Storage::disk('public')->delete('property/'.$property->image);
+            if (request()->hasFile('image')) {
+                $file = request()->file('image');
+                $fileName = $imagename1;
+                $file->move('property', $fileName);
             }
-            $propertyimage = Image::make($image)->stream();
-            Storage::disk('public')->put('property/'.$imagename, $propertyimage);
 
-        }else{
+        } else {
             $imagename = $property->image;
         }
 
-
         $floor_plan = $request->file('floor_plan');
-        if(isset($floor_plan)){
+        if (isset($floor_plan)) {
             $currentDate = Carbon::now()->toDateString();
-            $imagefloorplan = 'floor-plan-'.$currentDate.'-'.uniqid().'.'.$floor_plan->getClientOriginalExtension();
+            $imagefloorplan = 'floor-plan-' . $currentDate . '-' . uniqid() . '.' . $floor_plan->getClientOriginalExtension();
 
-            if(!Storage::disk('public')->exists('property')){
-                Storage::disk('public')->makeDirectory('property');
+
+
+            if (File::exists(public_path('uploads/csv/img.png'))) {
+                File::delete(public_path('uploads/csv/img.png'));
             }
-            if(Storage::disk('public')->exists('property/'.$property->floor_plan)){
-                Storage::disk('public')->delete('property/'.$property->floor_plan);
+            if (request()->hasFile('floor_plan')) {
+                $floor_plan = request()->file('floor_plan');
+                $fileName2 = $imagefloorplan;
+                $floor_plan->move('property', $fileName2);
             }
 
-            $propertyfloorplan = Image::make($floor_plan)->stream();
-            Storage::disk('public')->put('property/'.$imagefloorplan, $propertyfloorplan);
-
-        }else{
+        } else {
             $imagefloorplan = $property->floor_plan;
         }
 
-        $property->title        = $request->title;
-        $property->slug         = $slug;
-        $property->price        = $request->price;
-        $property->purpose      = $request->purpose;
-        $property->type         = $request->type;
-        $property->image        = $imagename;
-        $property->bedroom      = $request->bedroom;
-        $property->bathroom     = $request->bathroom;
-        $property->city         = $request->city;
-        $property->city_slug    = str_slug($request->city);
-        $property->address      = $request->address;
-        $property->area         = $request->area;
+        $property->title = $request->title;
+        $property->slug = $slug;
+        $property->price = $request->price;
+        $property->purpose = $request->purpose;
+        $property->type = $request->type;
+        $property->image = $imagename;
+        $property->bedroom = $request->bedroom;
+        $property->bathroom = $request->bathroom;
+        $property->city = $request->city;
+        $property->city_slug = str_slug($request->city);
+        $property->address = $request->address;
+        $property->area = $request->area;
 
-        if(isset($request->featured)){
+        if (isset($request->featured)) {
             $property->featured = true;
-        }else{
+        } else {
             $property->featured = false;
         }
 
-        $property->description  = $request->description;
-        $property->video        = $request->video;
-        $property->floor_plan   = $imagefloorplan;
-        $property->location_latitude  = $request->location_latitude;
+        $property->description = $request->description;
+        $property->video = $request->video;
+        $property->floor_plan = $imagefloorplan;
+        $property->location_latitude = $request->location_latitude;
         $property->location_longitude = $request->location_longitude;
-        $property->nearby             = $request->nearby;
+        $property->nearby = $request->nearby;
         $property->save();
 
         $property->features()->sync($request->features);
 
         $gallary = $request->file('gallaryimage');
-        if($gallary){
-            foreach($gallary as $images){
-                if(isset($images))
-                {
+        if ($gallary) {
+            foreach ($gallary as $images) {
+                if (isset($images)) {
                     $currentDate = Carbon::now()->toDateString();
-                    $galimage['name'] = 'gallary-'.$currentDate.'-'.uniqid().'.'.$images->getClientOriginalExtension();
-                    $galimage['size'] = $images->getClientSize();
+                    $name= 'gallary-' . $currentDate . '-' . uniqid() . '.' . $images->getClientOriginalExtension();
+                    $galimage['name'] = 'gallary-' . $currentDate . '-' . uniqid() . '.' . $images->getClientOriginalExtension();
+                    $galimage['size'] = null;
                     $galimage['property_id'] = $property->id;
-                    
-                    if(!Storage::disk('public')->exists('property/gallery')){
-                        Storage::disk('public')->makeDirectory('property/gallery');
-                    }
-                    $propertyimage = Image::make($images)->stream();
-                    Storage::disk('public')->put('property/gallery/'.$galimage['name'], $propertyimage);
 
+                    $images->move('property/gallery/', $name);
                     $property->gallery()->create($galimage);
                 }
             }
@@ -275,26 +264,22 @@ class PropertyController extends Controller
         return redirect()->route('admin.properties.index');
     }
 
- 
+
     public function destroy(Property $property)
     {
         $property = Property::find($property->id);
 
-        if(Storage::disk('public')->exists('property/'.$property->image)){
-            Storage::disk('public')->delete('property/'.$property->image);
-        }
-        if(Storage::disk('public')->exists('property/'.$property->floor_plan)){
-            Storage::disk('public')->delete('property/'.$property->floor_plan);
+        if (File::exists(public_path($property->floor_plan))) {
+            File::delete(public_path($property->floor_plan));
         }
 
         $property->delete();
-        
+
         $galleries = $property->gallery;
-        if($galleries)
-        {
+        if ($galleries) {
             foreach ($galleries as $key => $gallery) {
-                if(Storage::disk('public')->exists('property/gallery/'.$gallery->name)){
-                    Storage::disk('public')->delete('property/gallery/'.$gallery->name);
+                if (File::exists(public_path($gallery->name))) {
+                    File::delete(public_path($gallery->name));
                 }
                 PropertyImageGallery::destroy($gallery->id);
             }
@@ -308,22 +293,27 @@ class PropertyController extends Controller
     }
 
 
-    public function galleryImageDelete(Request $request){
-        
+    public function galleryImageDelete(Request $request)
+    {
+
         $gallaryimg = PropertyImageGallery::find($request->id)->delete();
 
-        if(Storage::disk('public')->exists('property/gallery/'.$request->image)){
-            Storage::disk('public')->delete('property/gallery/'.$request->image);
+        if (Storage::disk('public')->exists('property/gallery/' . $request->image)) {
+            Storage::disk('public')->delete('property/gallery/' . $request->image);
+        }
+        if (File::exists(public_path($request->image))) {
+            File::delete(public_path($request->image));
         }
 
-        if($request->ajax()){
+        if ($request->ajax()) {
 
             return response()->json(['msg' => $gallaryimg]);
         }
     }
 
     // YOUTUBE LINK TO EMBED CODE
-    private function convertYoutube($youtubelink, $w = 250, $h = 140) {
+    private function convertYoutube($youtubelink, $w = 250, $h = 140)
+    {
         return preg_replace(
             "/\s*[a-zA-Z\/\/:\.]*youtu(be.com\/watch\?v=|.be\/)([a-zA-Z0-9\-_]+)([a-zA-Z0-9\/\*\-\_\?\&\;\%\=\.]*)/i",
             "<iframe width=\"$w\" height=\"$h\" src=\"//www.youtube.com/embed/$2\" frameborder=\"0\" allowfullscreen></iframe>",

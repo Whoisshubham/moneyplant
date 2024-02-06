@@ -76,7 +76,7 @@
                 </div>
                 @if($property->floor_plan && $property->floor_plan != 'default.png')
                 <div class="body">
-                    <img class="img-responsive" src="{{Storage::url('property/'.$property->floor_plan)}}" alt="{{$property->title}}">
+                    <img class="img-responsive" src="{{asset($property->floor_plan)}}" alt="{{$property->title}}">
                 </div>
                 @endif
             </div>
@@ -102,7 +102,7 @@
                     <div class="gallery-box">
                         @foreach($property->gallery as $gallery)
                         <div class="gallery-image">
-                            <img class="img-responsive" src="{{Storage::url('property/gallery/'.$gallery->name)}}" alt="{{$property->title}}">
+                            <img class="img-responsive" src="{{asset($gallery->name)}}" alt="{{$property->title}}">
                         </div>
                         @endforeach
                     </div>
@@ -122,7 +122,7 @@
                         @if($comment->parent_id == NULL)
                             <div class="comment">
                                 <div class="author-image">
-                                    <span style="background-image:url({{ Storage::url('users/'.$comment->users->image) }});"></span>
+                                    <span style="background-image:url({{ asset($comment->users->image) }});"></span>
                                 </div>
                                 <div class="content">
                                     <div class="author-name">
@@ -139,7 +139,7 @@
                         @foreach($comment->children as $comment)
                             <div class="comment children">
                                 <div class="author-image">
-                                    <span style="background-image:url({{ Storage::url('users/'.$comment->users->image) }});"></span>
+                                    <span style="background-image:url({{ asset($comment->users->image) }});"></span>
                                 </div>
                                 <div class="content">
                                     <div class="author-name">
@@ -185,7 +185,7 @@
                 </div>
                 <div class="body">
 
-                    <img class="img-responsive thumbnail" src="{{Storage::url('property/'.$property->image)}}" alt="{{$property->title}}">
+                    <img class="img-responsive thumbnail" src="{{asset($property->image)}}" alt="{{$property->title}}">
                     
                     <a href="{{route('admin.properties.index')}}" class="btn btn-danger btn-lg waves-effect">
                         <i class="material-icons left">arrow_back</i>

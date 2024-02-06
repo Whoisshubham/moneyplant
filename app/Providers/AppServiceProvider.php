@@ -39,14 +39,11 @@ class AppServiceProvider extends ServiceProvider
 
 
             // SHARE WITH SPECIFIC VIEW
-            view()->composer('pages.search', function($view) {
-                $view->with('bathroomdistinct', Property::select('bathroom')->distinct()->get());
-            });
+            // view()->composer('pages.search', function($view) {
+            //     $view->with('bathroomdistinct', Property::select('bathroom')->distinct()->get());
+            // });
 
-            view()->composer('frontend.partials.footer', function($view) {
-                $view->with('footerproperties', Property::latest()->take(3)->get());
-                $view->with('footersettings', Setting::select('footer','aboutus','facebook','twitter','linkedin')->get());
-            });
+           
 
             view()->composer('frontend.partials.navbar', function($view) {
                 $view->with('navbarsettings', Setting::select('name')->get());
@@ -57,19 +54,19 @@ class AppServiceProvider extends ServiceProvider
                 $view->with('navbarmessages', Message::latest()->where('agent_id', Auth::id())->take(5)->get());
             });
 
-            view()->composer('pages.contact', function($view) {
-                $view->with('contactsettings', Setting::select('phone','email','address')->get());
-            });
+            // view()->composer('pages.contact', function($view) {
+            //     $view->with('contactsettings', Setting::select('phone','email','address')->get());
+            // });
 
-            view()->composer('pages.blog.sidebar', function($view) {
+            // view()->composer('pages.blog.sidebar', function($view) {
 
-                $archives     = Post::archives();
-                $categories   = Category::has('posts')->withCount('posts')->get();
-                $tags         = Tag::has('posts')->get();
-                $popularposts = Post::orderBy('view_count','desc')->take(5)->get();
+            //     $archives     = Post::archives();
+            //     $categories   = Category::has('posts')->withCount('posts')->get();
+            //     $tags         = Tag::has('posts')->get();
+            //     $popularposts = Post::orderBy('view_count','desc')->take(5)->get();
 
-                $view->with(compact('archives','categories','tags','popularposts'));
-            });
+            //     $view->with(compact('archives','categories','tags','popularposts'));
+            // });
 
         }
     }

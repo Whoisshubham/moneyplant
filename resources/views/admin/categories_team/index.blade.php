@@ -1,6 +1,6 @@
 @extends('backend.layouts.app')
 
-@section('title', 'Properties')
+@section('title', 'Categories')
 
 @push('styles')
 
@@ -12,7 +12,7 @@
 @section('content')
 
     <div class="block-header">
-        <a href="{{route('admin.properties.create')}}" class="waves-effect waves-light btn right m-b-15 addbtn">
+        <a href="{{route('admin.team-categories.create')}}" class="waves-effect waves-light btn right m-b-15 addbtn">
             <i class="material-icons left">add</i>
             <span>CREATE </span>
         </a>
@@ -21,8 +21,8 @@
     <div class="row clearfix">
         <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
             <div class="card">
-                <div class="header bg-indigo">
-                    <h2>PROPERTY LIST</h2>
+                <div class="header">
+                    <h2>CATEGORY LIST</h2>
                 </div>
                 <div class="body">
                     <div class="table-responsive">
@@ -30,66 +30,31 @@
                             <thead>
                                 <tr>
                                     <th>SL.</th>
-                                    <th>Image</th>
-                                    <th>Title</th>
-                                    <th>Author</th>
-                                    <th>Type</th>
-                                    <th>Purpose</th>
-                                    <th>Beds</th>
-                                    <th>Baths</th>
-                                    <th><i class="material-icons small">comment</i></th>
-                                    <th><i class="material-icons small">stars</i></th>
-                                    <th width="150">Action</th>
+                                    <th>Name</th>
+                                    <th>Action</th>
                                 </tr>
                             </thead>
-
+                        
                             <tbody>
-                                @foreach( $properties as $key => $property )
+                                @foreach($teamList as $key => $category )
                                 <tr>
                                     <td>{{$key+1}}</td>
-                                    <td>
-                                        @if( $property->image)
-                                            <img src="{{asset($property->image)}}" alt="{{$property->title}}" width="60" class="img-responsive img-rounded">
-                                        @endif
-                                    </td>
-                                    <td>
-                                        <span title="{{$property->title}}">
-                                            {{ str_limit($property->title,10) }}
-                                        </span>
-                                    </td>
-                                    <td>{{$property->user->name}}</td>
-                                    <td>{{$property->type}}</td>
-                                    <td>{{$property->purpose}}</td>
-                                    <td>{{$property->bedroom}}</td>
-                                    <td>{{$property->bathroom}}</td>
-
-                                    <td>
-                                        <span class="badge bg-indigo">{{ $property->comments_count }}</span>
-                                    </td>
-
-                                    <td>
-                                        @if($property->featured == true)
-                                            <span class="badge bg-indigo"><i class="material-icons small">star</i></span>
-                                        @endif
-                                    </td>
-
+                                  
+                                    <td>{{$category->name}}</td>
                                     <td class="text-center">
-                                        <a href="{{route('admin.properties.show',$property->slug)}}" class="btn btn-success btn-sm waves-effect">
-                                            <i class="material-icons">visibility</i>
-                                        </a>
-                                        <a href="{{route('admin.properties.edit',$property->slug)}}" class="btn btn-info btn-sm waves-effect">
+                                        <a href="{{route('admin.team-categories.edit',$category->id)}}" class="btn btn-info btn-sm waves-effect">
                                             <i class="material-icons">edit</i>
                                         </a>
-                                        <button type="button" class="btn btn-danger btn-sm waves-effect" onclick="deletePost({{$property->id}})">
+                                        <button type="button" class="btn btn-danger btn-sm waves-effect" onclick="deleteCategory({{$category->id}})">
                                             <i class="material-icons">delete</i>
                                         </button>
-                                        <form action="{{route('admin.properties.destroy',$property->slug)}}" method="POST" id="del-post-{{$property->id}}" style="display:none;">
+                                        <form action="{{route('admin.team-categories.destroy',$category->id)}}" method="POST" id="del-category-{{$category->id}}" style="display:none;">
                                             @csrf
                                             @method('DELETE')
                                         </form>
                                     </td>
                                 </tr>
-                                @endforeach
+                                @endforeach 
                             </tbody>
                         </table>
                     </div>
@@ -118,7 +83,7 @@
     <script src="{{ asset('backend/js/pages/tables/jquery-datatable.js') }}"></script>
 
     <script>
-        function deletePost(id){
+        function deleteCategory(id){
             
             swal({
             title: 'Are you sure?',
@@ -130,10 +95,10 @@
             confirmButtonText: 'Yes, delete it!'
             }).then((result) => {
                 if (result.value) {
-                    document.getElementById('del-post-'+id).submit();
+                    document.getElementById('del-category-'+id).submit();
                     swal(
                     'Deleted!',
-                    'Post has been deleted.',
+                    'Category has been deleted.',
                     'success'
                     )
                 }
