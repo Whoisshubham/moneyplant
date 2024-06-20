@@ -49,8 +49,9 @@
             </div>
             @if (count($properties) > 0)
                 <div class="row mt-5">
-                    @foreach ($properties as $iteams)      
-                        <div class="col-lg-4 col-md-12 col-sm-12" data-aos="fade-up" data-aos-duration="3000">
+                    @foreach ($properties as $iteams) 
+                    <div class="col-lg-4 col-md-12 col-sm-12" data-aos="fade-up" data-aos-duration="3000">
+                            <a href="{{url('property-discription')}}">   
                             <div class="card">
                                 <div class="FeatureIMg">
                                     <img src="{{asset($iteams->image)}}"
@@ -133,6 +134,7 @@
                                     </div>
                                 </div>
                             </div>
+                        </a>
                         </div>
                     @endforeach
                 </div>
@@ -255,7 +257,7 @@
                         <p>Who’s behind Money Plant?</p>
                         <h2>We work hard to take our clients on a hassle-free and successful property journey.</h2>
                         <div class="GetStartEdBtn mt-5">
-                            <a href="./about.php" class="btn btn-customClor">Meet the team</a>
+                            <a href="./{{url('/about')}}" class="btn btn-customClor">Meet the team</a>
                         </div>
                     </div>
                 </div>

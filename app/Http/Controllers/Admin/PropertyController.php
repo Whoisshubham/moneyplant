@@ -220,7 +220,7 @@ class PropertyController extends Controller
         $property->price = $request->price;
         $property->purpose = $request->purpose;
         $property->type = $request->type;
-        $property->image = $imagename;
+        $property->image = $imagename ?? null;
         $property->bedroom = $request->bedroom;
         $property->bathroom = $request->bathroom;
         $property->city = $request->city;

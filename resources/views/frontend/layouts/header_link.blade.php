@@ -5,6 +5,12 @@
 <link rel="stylesheet" href="{{ asset('frontend/assests/css/aboutstyle.css') }}">
 
 <link rel="stylesheet" href="{{ asset('frontend/assests/css/properties-for-sale.css') }}">
+<link
+rel="stylesheet"
+href="{{ asset('frontend/assests/css/knowledge-center-calculators.css')}}"
+/>
+
+<link rel="stylesheet" href="{{ asset('frontend/assests/css/area-guide.css')}}" />
 
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css">
 
@@ -12,6 +18,7 @@
     integrity="sha512-z3gLpd7yknf1YoNbCzqRKc4qyor8gaKU1qmn+CShxbuBusANI9QpRohGBreCFkKxLhei6S9CQXFEbbKuqLg0DA=="
     crossorigin="anonymous" referrerpolicy="no-referrer" />
 
+    <link rel="stylesheet" href="{{ asset('frontend/assests/css/why-buy-through-moneyplant.css')}}" />
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
 
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">

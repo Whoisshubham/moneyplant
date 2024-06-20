@@ -54,8 +54,8 @@
                         </div>
                         <div class="form-group">
                             <div class="form-line">
-                                <textarea name="description" rows="4" class="form-control no-resize">{{$team->description ?? null}}</textarea>
-                                <label class="form-label">Description <span class="text-danger">*</span></label>
+                                <label for="tinymce">Description <span class="text-danger">*</span></label>
+                                <textarea name="description" id="tinymce">{{$team->description ?? null}}</textarea>
                             </div>
                         </div>
                         <div class="form-group form-float mt-t">
@@ -108,6 +108,57 @@
 
 
 @push('scripts')
+
+    
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-fileinput/4.4.5/js/fileinput.min.js"></script>
+
+    <script src="{{asset('backend/plugins/tinymce/tinymce.js')}}"></script>
+    <script>
+        $(function () {
+            $("#input-id").fileinput();
+        });
+
+        $(function () {
+            tinymce.init({
+                selector: "textarea#tinymce",
+                theme: "modern",
+                height: 300,
+                plugins: [
+                    'advlist autolink lists link image charmap print preview hr anchor pagebreak',
+                    'searchreplace wordcount visualblocks visualchars code fullscreen',
+                    'insertdatetime media nonbreaking save table contextmenu directionality',
+                    'emoticons template paste textcolor colorpicker textpattern imagetools'
+                ],
+                toolbar1: 'insertfile undo redo | styleselect | bold italic | alignleft aligncenter alignright alignjustify | bullist numlist outdent indent | link image',
+                toolbar2: 'print preview media | forecolor backcolor emoticons',
+                image_advtab: true
+            });
+            tinymce.suffix = ".min";
+            tinyMCE.baseURL = '{{asset('backend/plugins/tinymce')}}';
+        });
+
+        $(function () {
+            tinymce.init({
+                selector: "textarea#tinymce-nearby",
+                theme: "modern",
+                height: 300,
+                plugins: [
+                    'advlist autolink lists link image charmap print preview hr anchor pagebreak',
+                    'searchreplace wordcount visualblocks visualchars code fullscreen',
+                    'insertdatetime media nonbreaking save table contextmenu directionality',
+                    'emoticons template paste textcolor colorpicker textpattern imagetools'
+                ],
+                toolbar1: 'insertfile undo redo | styleselect | bold italic | alignleft aligncenter alignright alignjustify | bullist numlist outdent indent | link image',
+                toolbar2: '',
+                image_advtab: true
+            });
+            tinymce.suffix = ".min";
+            tinyMCE.baseURL = '{{asset('backend/plugins/tinymce')}}';
+        });
+ 
+
+        </script>
+
     <script>
         $(function() {
             function showImage(fileInput, imgID) {

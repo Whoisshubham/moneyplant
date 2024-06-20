@@ -234,66 +234,7 @@
             </div>
         </div>
     </Section>
-    <section class="popularSliderSection mt-3 mb-3">
-        <div class="container">
-            <div class="row">
-                <div class="col-lg-2 col-md-12 col-sm-12">
-                    <p class="mb-0 PPara">Popular:</p>
-                </div>
-                <div class="col-lg-10 col-md-12 col-sm-12 mt-3 mt-lg-0">
-                    <!-- Swiper -->
-                    <div class="swiper mySwiper pt-2 px-3">
-                        <div class="swiper-wrapper">
-                            <div class="swiper-slide popularSwiper">
-                                <a href="javascript:;" id="popular_view" class="populer_filter">
-                                    <i class="fa-regular fa-eye eye_icon me-2"></i>
-
-                                    Property with a View <span> (983)</span>
-                                </a>
-                            </div>
-                            <div class="swiper-slide popularSwiper">
-                                <a href="javascript:;" id="popular_view" class="populer_filter">
-                                    <i class="fa-regular fa-eye eye_icon me-2"></i>
-
-                                    Property with a View <span> (983)</span>
-                                </a>
-                            </div>
-                            <div class="swiper-slide popularSwiper">
-                                <a href="javascript:;" id="popular_view" class="populer_filter">
-                                    <i class="fa-regular fa-eye eye_icon me-2"></i>
-
-                                    Property with a View <span> (983)</span>
-                                </a>
-                            </div>
-                            <div class="swiper-slide popularSwiper">
-                                <a href="javascript:;" id="popular_view" class="populer_filter">
-                                    <i class="fa-regular fa-eye eye_icon me-2"></i>
-
-                                    Property with a View <span> (983)</span>
-                                </a>
-                            </div>
-                            <div class="swiper-slide popularSwiper">
-                                <a href="javascript:;" id="popular_view" class="populer_filter">
-                                    <i class="fa-regular fa-eye eye_icon me-2"></i>
-
-                                    Property with a View <span> (983)</span>
-                                </a>
-                            </div>
-                            <div class="swiper-slide popularSwiper">
-                                <a href="javascript:;" id="popular_view" class="populer_filter">
-                                    <i class="fa-regular fa-eye eye_icon me-2"></i>
-
-                                    Property with a View <span> (983)</span>
-                                </a>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="swiper-button-next NextSwiperBtn"></div>
-                    <div class="swiper-button-prev PreSwiperBtn"></div>
-                </div>
-            </div>
-        </div>
-    </section>
+   
 
     <section class="PropertySearch">
         <div class="container">

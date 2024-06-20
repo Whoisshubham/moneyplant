@@ -45,10 +45,10 @@
             <h3>Know Us</h3>
   
             <ul>
-              <li><a href="index.php">Home</a></li>
+              <li><a href="{{url('/')}}">Home</a></li>
               <br />
   
-              <li><a href="about.php">About Us</a></li>
+              <li><a href="{{url('/about')}}">About Us</a></li>
               <br />
   
               <li><a href="#">News</a></li>
@@ -65,9 +65,9 @@
           <div class="footer-menu">
             <h3>Services</h3>
             <ul>
-              <li><a href="buy.php">Buy</a></li>
+              <li><a href="{{url('buy')}}">Buy</a></li>
               <br />
-              <li><a href="sell.php">Sell</a></li>
+              <li><a href="{{url('sell')}}">Sell</a></li>
               <br />
             </ul>
           </div>

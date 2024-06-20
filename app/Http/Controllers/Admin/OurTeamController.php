@@ -39,6 +39,9 @@ class OurTeamController extends Controller
         $image->move('team', $imagename);
         $store = new Team;
         $store->categorie_id = $request->team;
+        $slug = strtolower(trim(preg_replace('/[^A-Za-z0-9-]+/', '-',  $request->name)));
+        $store->slug = $slug;
+        $store->categorie_id = $request->team;
         $store->name = $request->name;
         $store->image = "team/" . $imagename;
         $store->designation = $request->designation;
@@ -84,6 +87,8 @@ class OurTeamController extends Controller
        
         $store->categorie_id = $request->team;
         $store->name = $request->name;
+        $slug = strtolower(trim(preg_replace('/[^A-Za-z0-9-]+/', '-',  $request->name)));
+        $store->slug = $slug;
         $store->image = $imageName;
         $store->designation = $request->designation;
         $store->call = $request->call;

@@ -1,10 +1,37 @@
 <?php
+use App\Http\Controllers\User\AboutController;
+use App\Http\Controllers\User\BuyerController;
+use App\Http\Controllers\User\listPropertyController;
+use App\Http\Controllers\User\PropertyController;
 
 // FRONT-END ROUTES
 Route::get('/', 'FrontpageController@index')->name('home');
 // Route::get('/slider', 'FrontpageController@slider')->name('slider.index');
-
+Route::get('about',[AboutController::class,'index']);
+Route::get('meet-the-team',[AboutController::class,'meetTheTeam']);
+Route::get('meet-the-team-details/{slug}',[AboutController::class,'meeetTheDetails']);
+Route::get('meet-the-team/{slug}',[AboutController::class,'meetTheTeamDetails']);
+Route::get('about/{slug}',[AboutController::class,'overview']);
 Route::get('/search', 'FrontpageController@search')->name('search');
+Route::get('/off-plan', 'FrontpageController@search');
+Route::get('list-my-property',[listPropertyController::class,'index']);
+Route::get('buyers-guide',[listPropertyController::class,'buyerGuid']);
+Route::get('sellers-guide',[listPropertyController::class,'sellerGuid']);
+Route::get('why-buy-through-moneyplant',[listPropertyController::class,'whyBuymoneyplant']);
+Route::get('why-sell-with-money-plant',[listPropertyController::class,'whySellmoneyplant']);
+Route::get('property-valuation',[listPropertyController::class,'valuation']);
+Route::get('knowledge-center-calculators',[listPropertyController::class,'knowledgeCenterCalculator']);
+Route::get('knowledge-center',[listPropertyController::class,'knowledgeCenter']);
+Route::get('area-guide',[listPropertyController::class,'areaGuid']);
+Route::get('terminology',[listPropertyController::class,'terminology']);
+Route::get('buy',[BuyerController::class,'buy']);
+Route::get('sell',[BuyerController::class,'sell']);
+Route::get('property-discription',[PropertyController::class,'index']);
+Route::get('reviews',[PropertyController::class,'reviews']);
+Route::get('careers',[PropertyController::class,'careers']);
+
+
+
 
 Route::get('/property', 'PagesController@properties')->name('property');
 Route::get('/property/{id}', 'PagesController@propertieshow')->name('property.show');
@@ -13,19 +40,19 @@ Route::post('/property/comment/{id}', 'PagesController@propertyComments')->name(
 Route::post('/property/rating', 'PagesController@propertyRating')->name('property.rating');
 Route::get('/property/city/{cityslug}', 'PagesController@propertyCities')->name('property.city');
 
-Route::get('/agents', 'PagesController@agents')->name('agents');
-Route::get('/agents/{id}', 'PagesController@agentshow')->name('agents.show');
+// Route::get('/agents', 'PagesController@agents')->name('agents');
+// Route::get('/agents/{id}', 'PagesController@agentshow')->name('agents.show');
 
-Route::get('/gallery', 'PagesController@gallery')->name('gallery');
+// Route::get('/gallery', 'PagesController@gallery')->name('gallery');
 
 #>>>>>>>>>>> Blog Section <<<<<<<<<<<
 Route::get('/blog', 'PagesController@blog')->name('blog');
-Route::get('/blog/{id}', 'PagesController@blogshow')->name('blog.show');
-Route::post('/blog/comment/{id}', 'PagesController@blogComments')->name('blog.comment');
+// Route::get('/blog/{id}', 'PagesController@blogshow')->name('blog.show');
+// Route::post('/blog/comment/{id}', 'PagesController@blogComments')->name('blog.comment');
 
-Route::get('/blog/categories/{slug}', 'PagesController@blogCategories')->name('blog.categories');
-Route::get('/blog/tags/{slug}', 'PagesController@blogTags')->name('blog.tags');
-Route::get('/blog/author/{username}', 'PagesController@blogAuthor')->name('blog.author');
+// Route::get('/blog/categories/{slug}', 'PagesController@blogCategories')->name('blog.categories');
+// Route::get('/blog/tags/{slug}', 'PagesController@blogTags')->name('blog.tags');
+// Route::get('/blog/author/{username}', 'PagesController@blogAuthor')->name('blog.author');
 
 
 #>>>>>> Contact Section <<<<<<<<<
